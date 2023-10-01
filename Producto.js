@@ -1,4 +1,4 @@
-const Cliente  = require("./ClienteResidencial.js");
+//const Cliente  = require("./ClienteResidencial.js");
 //
 class Producto {
     #nombreProducto;        // puede haber muchos procuctos

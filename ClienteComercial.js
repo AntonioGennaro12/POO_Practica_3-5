@@ -18,8 +18,13 @@ class ClienteComercial extends NuestrosClientes {
     }
 
 // Procedimientos 
+    comprarProducto(prod, cant){
+        let desc = this.getDescuento();
+        console.log("DescCompraProd: "+desc);
+        console.log("Cliente: " + this.getNombreCliente() + " está comprando: " + cant + " unidad/es de: "+prod.getNombreProducto() );
+        this._montoComprado += ((prod.getPrecioProducto())*cant)*(1-desc); 
 
-
+    }
 
 }
 

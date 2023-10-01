@@ -16,6 +16,16 @@ class ClienteResidencial extends NuestrosClientes {
         return (this.#fechaCumpleanios);
     }
 
+    comprarProducto(prod, cant){
+        /* let desc = this.getDescuento(); */
+        /* console.log("DescCompraProd: "+desc); */
+        console.log("Cliente: " + this.getNombreCliente() + " está comprando: " + cant + " unidad/es de: "+prod.getNombreProducto() );
+        this._montoComprado += ((prod.getPrecioProducto())*cant); /* sin esto: *(1-desc) */
+    }
+
+    montoGastado(){
+        console.log("Cliente: " + this.getNombreCliente()+", Cumpleaños: "+ this.getFechaCumpleanios() + ", lleva gastado: "+this._montoComprado);
+    }
 }
 
 module.exports = ClienteResidencial;
