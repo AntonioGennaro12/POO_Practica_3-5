@@ -1,10 +1,12 @@
 const NuestrosClientes = require("./NuestrosClientes.js");
 const Producto  = require("./Producto.js");
+const { Promociones, CLIENTES_RESID } = require("./Promociones.js");
+
 //
 class ClienteResidencial extends NuestrosClientes {
     #fechaCumpleanios;
-    constructor(nombre, monto, fechaCumple) {
-        super(nombre, monto);
+    constructor(nombre, monto, promos, fechaCumple,) {
+        super(nombre, monto, promos);
         this.#fechaCumpleanios = fechaCumple;    // string cuatro caracteres
     }
     
@@ -17,10 +19,16 @@ class ClienteResidencial extends NuestrosClientes {
     }
 
     comprarProducto(prod, cant){
-        /* let desc = this.getDescuento(); */
-        /* console.log("DescCompraProd: "+desc); */
         console.log("Cliente: " + this.getNombreCliente() + " está comprando: " + cant + " unidad/es de: "+prod.getNombreProducto() );
-        this._montoComprado += ((prod.getPrecioProducto())*cant); /* sin esto: *(1-desc) */
+        let descPromos = 0;
+        let promos = this.getPromociones();
+        if (promos != null){
+            for (let i=0;i<promos.length;i++) {
+                //console.log(promos[i].getNombrePromo());
+                descPromos += promos[i].calculaDescPromo(this, CLIENTES_RESID, prod.getPrecioProducto(), cant, this.getFechaCumpleanios());
+            }
+        }
+        this._montoComprado += (((prod.getPrecioProducto())*cant) - descPromos); 
     }
 
     montoGastado(){

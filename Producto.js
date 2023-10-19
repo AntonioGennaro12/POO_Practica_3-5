@@ -67,11 +67,16 @@ class Producto {
     venderACliente (clien, cant) {
         console.log("Producto: " + this.#nombreProducto + " vende: " + cant + 
                     " unidad/es a cliente: "+clien.getNombreCliente() );
-        clien.comprarProducto (this, cant);
-        this.setVendidoA((clien.getNombreCliente()), cant); 
-        this.#cantidadStock -= cant;
-        if (this.#cantidadStock <= this.#stockMinimo) {
-            console.log("Alerta Stock Mínimo!! Producto: "+this.#nombreProducto+" cant. "+this.#cantidadStock);
+        if (this.#cantidadStock >= cant) {
+            clien.comprarProducto (this, cant);
+            this.setVendidoA((clien.getNombreCliente()), cant); 
+            this.#cantidadStock -= cant;
+            if (this.#cantidadStock <= this.#stockMinimo) {
+                console.log("Alerta Stock Mínimo!! Producto: "+this.#nombreProducto+" cant. "+this.#cantidadStock);
+            }
+        }
+        else {
+            console.log("NO SE PUDO REALIZAR LA COMPRA!!! No hay stock suficiente... Producto: "+this.#nombreProducto);
         }
     }
        

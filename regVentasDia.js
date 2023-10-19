@@ -32,9 +32,9 @@ const ventasDia05   =   [   [productos[3], 2, Juan],                // Té     x
                         ];
 
 const ventasDia06   =   [   [productos[2], 1, Luis],                // Café   x1 a Luis
-                            [productos[1], 1, Juan],                // Azucar x1 a Juan
-                            [productos[2], 2, Carlos],              // Café   x2 a Carlos
-                            [productos[0], 50, MercadoTito],        // Yerba x50 a MT     
+                            [productos[1], 3, Juan],                // Azucar x1 a  (era 1)
+                            [productos[2], 4, Carlos],              // Café   x2 a Carlos (era 2)
+                            [productos[0], 50, MercadoTito],        // Yerba  x50 a MT     
                         ];    
                             
 // ....
